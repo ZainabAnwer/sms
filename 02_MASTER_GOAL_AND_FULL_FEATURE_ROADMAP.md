@@ -1,6 +1,6 @@
 # Al-Falah SchoolOS — 0 to A-Z Master Goal & Complete Feature Roadmap
 
-This document outlines the **complete, end-to-end vision, functional scope, and phase-by-phase implementation roadmap** for the **Al-Falah School Management System**. It synthesizes the most effective architectures, modules, and user interfaces identified across our benchmarked GitHub repositories.
+This document outlines the **complete, end-to-end vision, functional scope, and phase-by-phase implementation roadmap** for the **Al-Falah School Management System**. It synthesizes the most effective architectures, modules, and user interfaces identified across our benchmarked GitHub repositories, enhanced with ground-reality Pakistani institutional features.
 
 ---
 
@@ -9,22 +9,29 @@ This document outlines the **complete, end-to-end vision, functional scope, and 
 Most school management systems available today are either generic Western-focused clones or incomplete student directories. **Al-Falah SchoolOS** is engineered specifically around the operational realities of private and semi-private institutions in Pakistan (affiliated with BSEK / BISE Boards), featuring:
 
 1. **True Role-Based Access Control (RBAC):** Strict isolation between Super Administration, Individual Teacher Workspaces, Student/Parent Dashboards, and Accounts Desks.
-2. **Pakistani Banking & Fee Recovery:** Triplicate bank challan vouchers (Bank Copy, School Copy, Student Copy) compatible with local banks (Habib Bank Limited, Meezan Bank, Bank Alfalah), with late fine rules and monthly reconciliation.
-3. **Biometric & Hardware Attendance:** Direct integration with fingerprint scanners and facial recognition devices for automatic staff and student clock-in logging.
+2. **Pakistani Banking & Dual Payment Channels:**
+   - Triplicate bank challan vouchers (Bank Copy, School Copy, Student Copy) compatible with local banks (Meezan Bank, HBL, Bank Alfalah) with late fee rules.
+   - Instant digital mobile wallet payments via **JazzCash & Easypaisa webhooks**.
+3. **Biometric & Hardware Attendance:** Direct integration with fingerprint scanners and facial recognition devices (ZKTeco TCP/IP Port 4370) for automatic staff and student clock-in logging with 15-minute grace period rules.
 4. **BSEK Matriculation Examination Engine:** Terminal marksheets calculating Continuous Assessment (CA 40%) and Final Terminal Exam (60%) with GPA and Grade distributions.
-5. **Modern Full-Stack Engineering:** Seamless evolution from verified HTML/JS interactive blueprints to a scalable **Next.js 15+ / PostgreSQL / Prisma** production web app.
+5. **Sibling Concession & Family Linking:** Automated discounts for families with multiple enrolled children (e.g., 20% on 2nd child, 50% on 3rd child).
+6. **SheetJS Excel/CSV Bulk Onboarding:** 1-Click bulk student and teacher import directly from administration spreadsheets.
+7. **Transport Fleet Management:** Van routes, Orangi Town stops, driver dossiers, and transport fee ledgering.
+8. **Digital Daily Diary & Homework:** Teacher assignment publishing, student submission tracking, and parent oversight.
+9. **Automated Monthly Billing (`pg_cron`):** Zero-touch invoice generation on the 1st of every month with automated SMS alerts.
 
 ---
 
-## 2. Benchmark Synthesis: Best Features from Analyzed GitHub Repositories
+## 2. Benchmark Synthesis: Best Features from Analyzed Repositories
 
-| Benchmark Repository | Showcase File | Best Feature Adopted into Our System |
-| :--- | :--- | :--- |
-| **LavSMS (Laravel SMS)** | `03_LavSMS_Laravel_Modules_showcase.html` | **Enterprise Fee & Challan Engine:** Triplicate voucher structure, arrears carry-forward, fee concession management, and defaulter tracking. |
-| **Upendra School SMS** | `05_Upendra_School_Management_showcase.html` | **Academic Timetable & Class Routine Matrix:** Conflict-free weekly schedules, teacher lecture workloads, and room assignments. |
-| **Yogndrr MERN School** | `07_Yogndrr_MERN_School_showcase.html` | **Clean Modular Navigation & Component Cards:** Fast state updates, notice board feeds, and grievance/complaint routing. |
-| **ApexSchool Flagship OS** | `00_FLAGSHIP_ApexSchool_OS_showcase.html` | **Executive KPI Analytics & BSEK Grade Engine:** High-level executive counters, student GPA calculation, and faculty punctuality indicators. |
-| **ScholarOS & Maktab** | `06_ScholarOS_...` & `02_Maktab_...` | **Pakistani Context & Demographics:** B-Form verification, guardian contact mapping, and Islamic study tajweed records. |
+| Benchmark Repository | Best Feature Adopted into Our System |
+| :--- | :--- |
+| **Coderbeb SMS (Next.js 16)** | **Enterprise Staff Punctuality & Grace Rules:** `staff_entry_time` (08:00 AM), `staff_grace_minutes` (15m), auto-late calculation, half-day salary cut, and certificate generation. |
+| **Maktab Academy (React + Supabase)** | **Gate Attendance Kiosk & Triplicate Challans:** USB barcode / RFID / biometric scanner kiosk with audio feedback, red overdue fee warning banner, and 3-part bank vouchers. |
+| **LavSMS (Laravel 8)** | **BSEK Terminal Marksheets & Promotion Engine:** Continuous Assessment (CA 40%) + Exam (60%), psychomotor evaluations (1-5 scale), and broadsheet master tabulation grids. |
+| **Hafizur Madrasa (Next.js)** | **Biometric Sync API & Parent SMS:** Live hardware punch feed stream and automated SMS notifications to parents when a child is absent. |
+| **Upendra Dhamala SMS** | **Non-Teaching Staff & 110mm Admit Cards:** Dedicated operational staff management (drivers, security, lab technicians) with separate payroll and photo exam admit passes. |
+| **Student Technical Plan** | **JazzCash / Easypaisa Webhooks, Sibling Discount Engine, SheetJS Bulk Import, Homework Diary, Transport Fleet, and pg_cron automated billing.** |
 
 ---
 
@@ -41,6 +48,8 @@ The central operational brain used by the School Principal, Chairman, and Admini
   * Filterable directory by class, section, gender, and fee clearance status.
   * Student Comprehensive Dossier detailing academic performance, gate attendance history, and father contact.
   * Admission Registration workflow with automatic Roll Number generation, B-Form recording, and class allocation.
+* **SheetJS 1-Click Bulk Importer:**
+  * Import 500+ student rosters and faculty lists in seconds via Excel (.xlsx) or CSV files.
 * **Master Timetable & Classroom Allocation:**
   * School-wide weekly schedule from Period 1 (08:30 AM) to Period 6 (12:30 PM).
   * Teacher substitute allocation when a teacher reports sick or on leave.
@@ -70,6 +79,8 @@ A strictly personal workspace accessed by authenticated instructors (e.g. *Sir T
 * **Continuous Assessment (CA) & Midterm Marks Entry:**
   * Marksheet entry table for the teacher's designated subject (e.g., Mathematics).
   * Monthly test scores (out of 20), classroom quizzes (out of 20), automated CA total (40%), and terminal exam inputs (out of 60).
+* **Digital Homework & Daily Diary Module:**
+  * Upload daily subject homework, reading assignments, and project submission deadlines.
 * **Staff Circulars & Notifications:**
   * Internal faculty notices, duty rosters (morning assembly, break monitoring), and academic coordinator directives.
 
@@ -83,18 +94,19 @@ A private portal for students and their guardians (e.g. *Muhammad Faraz — Roll
   * Gate Arrival Punctuality: Days present, average arrival time (`07:46 AM`).
   * Current Month Fee Status (`Cleared` vs `Arrears Overdue`).
 * **My Registered Subjects & Course Instructors:**
-  * Table of all enrolled curriculum subjects mapped to their respective instructors (e.g., Mathematics -> Sir Tariq, Physics -> Sir Asadullah).
+  * Table of all enrolled curriculum subjects mapped to their respective instructors.
   * Continuous Assessment (40%) and Terminal Exam (60%) breakdown per subject.
+* **Digital Daily Diary & Homework Tab:**
+  * View today's pending homework assignments across all subjects and upload completed work.
 * **My Class Timetable:**
   * Weekly routine for the student's specific section showing daily periods, break times, and lab sessions.
 * **BSEK Terminal Marksheet (Downloadable/Printable):**
   * Official Karachi Secondary Board format report card with subject-wise marks, total obtained (out of 100 per subject), letter grades, and principal stamp.
-* **Triplicate Bank Fee Challan Voucher:**
-  * Complete 3-part bank voucher (Bank Copy, School Copy, Student Copy).
-  * Itemized breakdown: Monthly Tuition (e.g., Rs 3,200) + Computer/Lab Fee (Rs 500) = Total Rs 3,700.
-  * Designated HBL / Meezan Bank Orangi Town branch stamps, due date, and barcode/challan reference.
-* **School Notices:**
-  * Parent bulletins, holiday announcements, and exam date sheets.
+* **Triplicate Bank Fee Challan Voucher & Online Mobile Payment:**
+  * Complete 3-part bank voucher (Bank Copy, School Copy, Student Copy) with Meezan/HBL branch stamps.
+  * **Pay via JazzCash / Easypaisa** one-click button for instant fee clearance.
+* **110mm Examination Admit Card Pass:**
+  * Photo-enabled official examination entry slip with roll number and hall seating assignment.
 
 ---
 
@@ -102,31 +114,41 @@ A private portal for students and their guardians (e.g. *Muhammad Faraz — Roll
 Dedicated administrative station for the school bursar and accounts officers.
 * **Financial Overview Hub:**
   * Total billed tuition for the current month.
-  * Reconciled collections via bank challans and counter cash.
-  * Monthly staff payroll expenditure across all 14 instructional and non-instructional staff.
-  * Total outstanding arrears and active fee defaulters list.
-* **Fee Master Ledger:**
-  * Complete roll-number-wise fee ledger with status badges (`Paid in Full`, `Arrears Overdue`, `Partial Payment`).
+  * Reconciled collections via bank challans, counter cash, and online JazzCash/Easypaisa webhooks.
+  * Monthly staff payroll expenditure across all instructional and non-instructional staff.
+  * Outstanding arrears and active fee defaulters list.
+* **Automated Monthly Billing Engine (`pg_cron`):**
+  * Auto-generates monthly tuition challans on the 1st of every month for all enrolled students.
+* **Sibling Concession Engine:**
+  * Automatic fee reduction calculation for registered sibling groups.
 * **3-Part Bank Challan Printing Engine:**
   * Bulk and single-voucher generation formatted for A4 standard triplicate printing.
 * **Faculty Payroll Register:**
   * Disbursed salaries, basic pay, allowances, attendance-based deductions, and payment reference numbers.
-* **Fee Defaulter Recovery Alerts:**
-  * Generation of reminder circulars for students with overdue balances prior to admit card issuance.
+* **Defaulter Recovery Alerts:**
+  * Automated SMS and WhatsApp reminders dispatched to parents of defaulter students before exam deadlines.
 
 ---
 
-### 3.5 ⏱️ Module 5: Biometric & RFID Attendance Integration Engine
+### 3.5 🚌 Module 5: Transport & Van Fleet Management
+* **Van & Bus Routes:** Route names, pickup/drop-off stops (e.g., Orangi Town Sectors 11½, 12, 14, 15).
+* **Driver Dossiers:** Driver name, CNIC, contact phone number, vehicle registration number, and license status.
+* **Transport Fee Allocation:** Monthly transportation charges automatically appended to the student's monthly fee challan.
+
+---
+
+### 3.6 ⏱️ Module 6: Biometric & RFID Attendance Integration Engine
 The hardware bridge that connects physical campus gate scanners to the web software.
 * **Supported Devices:** ZKTeco K40, VF380, MB20, and TCP/IP-enabled biometric attendance clocks.
 * **Edge Ingestion Daemon:**
   * A lightweight background process (Python `pyzk` daemon or Go binary) running on the local campus server.
   * Continuously listens to device sockets, captures punch records (`User_ID`, `Timestamp`, `Verification_Type`).
 * **Punctuality Calculation Engine:**
-  * Staff Cutoff: 07:45 AM (Punctual). 07:46–08:00 AM (Grace). 08:01+ AM (Late).
-  * Automated generation of monthly attendance summaries for payroll deduction calculations.
+  * Staff Cutoff: 07:45 AM (Punctual). 07:46–08:00 AM (Grace). 08:01+ AM (Late). 3 lates = 1/2 day deduction.
+* **Principal Punctuality Leaderboard:**
+  * Monthly Gold, Silver, Bronze faculty podium rankings and automated warning notice dispatch.
 * **Instant Parent SMS Alerts:**
-  * Integration with local Pakistani SMS gateways (e.g., Telco SMS, BrandSMS) to alert parents if a student has not clocked in by 08:30 AM.
+  * Automated SMS notification dispatched to parents when a child is not clocked in by 08:30 AM.
 
 ---
 
@@ -140,39 +162,41 @@ timeline
             : Role-Based Separation & Pakistani Demographic Seeding
     Phase 2 : Next Immediate : Next.js 15+ & TypeScript Project Initialization
             : Prisma Schema & PostgreSQL Database Modeling
-            : Role-Based Authentication (NextAuth / JWT)
-    Phase 3 : Core Build : Admin Command Center Migration
+            : Multi-Role Auth (NextAuth / Supabase Auth) with RLS
+    Phase 3 : Core Portals : Admin Command Center Migration
             : Individual Teacher & Student Portal Migration
-            : 3-Part Bank Challan PDF Generation Service
-    Phase 4 : Hardware & BSEK : Biometric Attendance Edge Ingestion Daemon
+            : 3-Part Bank Challan & JazzCash/Easypaisa Webhooks
+    Phase 4 : Hardware & Advanced : Biometric Attendance Edge Ingestion Daemon
+            : SheetJS Bulk Import Engine & Sibling Concession
+            : Transport Fleet & Homework Diary Modules
             : BSEK Terminal Grade & Report Card Engine
-            : SMS Gateway & Parent WhatsApp Integration
-    Phase 5 : Production Launch : School Local Network Deployment & Cloud Backup
-            : Staff Training & Live Semester Rollout
+    Phase 5 : Production Launch : Campus Local Network Deployment & Cloud Sync
+            : Staff Training & Live School Go-Live
 ```
 
-### Phase 1: Prototype Architecture & Requirement Freezing (Current Stage)
+### Phase 1: Prototype Architecture & Requirement Freezing (Completed)
 * ✅ Full interactive single-page blueprint (`al_falah_grammar_school_showcase.html`).
 * ✅ Strict RBAC simulation: Super Admin, Teacher (Sir Tariq), Student (Muhammad Faraz), and Accounts Desk.
 * ✅ Authentic Karachi BSEK curriculum mapping, 25+ seeded students, and 14+ teachers.
-* ✅ Live Cloudflare tunnel demonstration for team review.
+* ✅ Repository synced on GitHub: [the-farazz/SMS](https://github.com/the-farazz/SMS.git).
 
-### Phase 2: Production Full-Stack Scaffold (React / Next.js)
+### Phase 2: Production Full-Stack Scaffold (React / Next.js 15+)
 * 🚀 Scaffold Next.js 15+ App Router project with TypeScript and Tailwind CSS.
 * 🚀 Implement PostgreSQL database schema using Prisma ORM.
-* 🚀 Multi-role Authentication system with secure sessions and role protection middleware (`/admin/*`, `/teacher/*`, `/student/*`, `/finance/*`).
+* 🚀 Multi-role Authentication system with secure sessions and role protection middleware (`/admin/*`, `/teacher/*`, `/student/*`, `/finance/*`, `/transport/*`).
 
-### Phase 3: Enterprise Features & Financial Engine
-* 🚀 Port all high-fidelity UI components from the blueprint into modular React components (`<TeacherWorkspace />`, `<StudentDashboard />`, `<FeeLedger />`).
-* 🚀 Triplicate Bank Challan PDF generator rendering print-ready vouchers.
-* 🚀 TanStack Table integration for student rosters with CSV/Excel exports.
+### Phase 3: Enterprise Portals & Financial Engine
+* 🚀 Port all high-fidelity UI components from blueprint into modular React components (`<TeacherWorkspace />`, `<StudentDashboard />`, `<FeeLedger />`).
+* 🚀 Triplicate Bank Challan PDF generator + JazzCash / Easypaisa mobile wallet payment flow.
+* 🚀 Sibling discount engine and pg_cron automated billing.
 
-### Phase 4: Biometric Hardware Daemon & Karachi Board Grading
-* 🚀 Build the local TCP/IP edge daemon to sync biometric clock-in punches to cloud database.
-* 🚀 Build the automated BSEK Continuous Assessment (40%) + Terminal (60%) mark aggregation engine.
-* 🚀 Integrate Pakistani SMS gateway for gate arrival alerts.
+### Phase 4: Biometric Hardware Daemon & Academic Excellence
+* 🚀 Deploy local TCP/IP edge daemon (`pyzk`) to sync biometric clock-in punches to PostgreSQL.
+* 🚀 SheetJS 1-click bulk student and faculty Excel importer.
+* 🚀 BSEK Continuous Assessment (40%) + Terminal (60%) mark aggregation engine.
+* 🚀 Transport fleet module and digital homework diary.
 
 ### Phase 5: Production Deployment & Campus Handover
 * 🚀 Deployment to Vercel/Railway with Cloudflare security.
-* 🚀 Local caching on school campus PC to guarantee offline functionality during internet downtime.
-* 🚀 Administrative and teacher training sessions.
+* 🚀 Campus local caching to guarantee offline functionality during internet downtime.
+* 🚀 Administrative and faculty training sessions.
