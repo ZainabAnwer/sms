@@ -81,17 +81,34 @@ The application is currently served locally and exposed via an active Cloudflare
 | **PDF Generation** | Browser `window.print()` with CSS media queries | Server-side `@react-pdf/renderer` or Puppeteer generating vector PDFs |
 | **Notifications** | Static notice circulars | SMS Gateway (Pakistani Telco API) + WhatsApp API for gate arrivals and dues alerts |
 
+## 5. Recent Activity & Progress Log (Updated Every Prompt)
+
+* **[2026-10-07 16:05]**:
+  - **Directory Cleanup Completed:** Removed all 14 temporary showcase `.html` and redundant markdown guides. Consolidated all 8 benchmarked repositories and links into [`BENCHMARK_REPOSITORIES_MASTER.md`](./BENCHMARK_REPOSITORIES_MASTER.md).
+  - **GitHub Remote Configured & Synced:** Initialized git, connected to `https://github.com/the-farazz/SMS.git`, committed, and pushed clean branch `main` (commit `1747a0e`).
+  - **Enterprise Architecture Expanded:** Integrated 6 new enterprise Pakistani modules into [`01_SYSTEM_ARCHITECTURE_AND_TECH_STACK.md`](./01_SYSTEM_ARCHITECTURE_AND_TECH_STACK.md) and [`02_MASTER_GOAL_AND_FULL_FEATURE_ROADMAP.md`](./02_MASTER_GOAL_AND_FULL_FEATURE_ROADMAP.md):
+    1. JazzCash & Easypaisa Webhooks & Mobile Wallets.
+    2. Sibling Concession & Family Linking Engine.
+    3. SheetJS 1-Click Excel/CSV Bulk Importer.
+    4. Transport & Van Fleet Management.
+    5. Digital Daily Diary & Homework Module.
+    6. Automated Monthly Billing Engine (`pg_cron`).
+  - **Project Operating Memory Locked:** Created [`AGENTS.md`](./AGENTS.md) and [`.agents/rules/project_rules.md`](./.agents/rules/project_rules.md) with 3 strict rules: Auto-updating this state file after every prompt, zero git pushes without explicit permission, and stating understanding clearly before implementing any work.
+* **[2026-10-07 16:18]**:
+  - **OpenSpec (`openspec.dev`) Setup Completed:**
+    - Initialized OpenSpec framework via `@fission-ai/openspec` natively configured for Antigravity (`--tools antigravity`).
+    - Created configuration directory `openspec/` (`config.yaml`, `specs/`, `changes/`).
+    - Injected 6 OpenSpec skills and slash-workflows into `.agents/` (`/opsx-propose`, `/opsx-apply`, `/opsx-verify`, `/opsx-archive`, etc.) for managing living specifications and task proposals.
+    - Verified all project rules in `.agents/rules/project_rules.md` and `AGENTS.md` remain intact.
+    - Committed and pushed to GitHub `origin/main` upon user instruction.
+
 ---
 
-## 5. Immediate Next Steps & Transition Plan
+## 6. Immediate Next Steps & Transition Plan
 
-1. **Step 1: Stakeholder Sign-Off**
-   * Share the 3 documentation files (`01_SYSTEM_ARCHITECTURE...`, `02_MASTER_GOAL...`, `03_CURRENT_STATUS...`) and the live tunnel link with school administration and team.
-2. **Step 2: Initialize Next.js Production Scaffold**
-   * Create the Next.js 15+ App Router codebase with TypeScript, Tailwind CSS, and Shadcn UI.
-3. **Step 3: Define Prisma Schema & Migrations**
-   * Write and apply the PostgreSQL database schema for Users, Teachers, Students, Classes, Attendance, Fees, and Exams.
-4. **Step 4: Port Modules Step-by-Step**
-   * Port Super Admin -> Teacher Workspace -> Student Dashboard -> Accounts Desk.
-5. **Step 5: Hardware & SMS Integration**
-   * Deploy the local Python biometric listener daemon on the campus LAN.
+1. **Step 1: Alignment on Next Feature / Next.js Setup**
+   * Confirm with user whether to start Phase 2 (Scaffolding Next.js 15+ App Router codebase with TypeScript & Prisma) or enhance specific modules in the prototype.
+2. **Step 2: Database Schema & Models**
+   * Write and apply the Prisma/PostgreSQL schema matching the expanded 11-table architecture.
+3. **Step 3: Port Portals Sequentially**
+   * Super Admin -> Individual Teacher Workspace -> Student/Parent Portal -> Accounts/Fee Desk -> Transport Desk.
