@@ -120,6 +120,13 @@ The application is currently served locally and exposed via an active Cloudflare
       2. WebAuthn Fingerprint / FaceID API: Uses native smartphone biometric sensors directly inside Chrome/Safari without requiring Python or native app installations.
       3. Updated `attendance_logs` schema to track `source` (`ZKTECO_HARDWARE` vs `MOBILE_GEOFENCE_WEBAUTHN`), `geo_lat`, `geo_lng`, and `biometric_verified`.
     - Committed and pushed to GitHub `origin/main` upon user instruction.
+* **[2026-10-08 15:00]**:
+  - Calibrated Rule 3 in `AGENTS.md`: Short 1-line responses for routine tasks (e.g. push, status) to preserve AI credits, reserving detailed explanations for major coding tasks.
+* **[2026-10-08 15:20]**:
+  - **Created School Owner & Principal Presentation Deck:**
+    - [`SCHOOL_OWNER_PRESENTATION_DECK.html`](./SCHOOL_OWNER_PRESENTATION_DECK.html): 6-Slide interactive visual deck with keyboard shortcuts (Arrow keys), live Geofence simulation test buttons, pain-point breakdowns, and role flows.
+    - [`SCHOOL_OWNER_PITCH_GUIDE.md`](./SCHOOL_OWNER_PITCH_GUIDE.md): Slide-by-slide Roman Urdu speaking script, dialogue templates, and common objection handling for school meetings.
+  - Committed and pushed to GitHub `origin/main` upon user instruction.
 
 ---
 
