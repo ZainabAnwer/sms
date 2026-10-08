@@ -127,6 +127,15 @@ The application is currently served locally and exposed via an active Cloudflare
     - [`SCHOOL_OWNER_PRESENTATION_DECK.html`](./SCHOOL_OWNER_PRESENTATION_DECK.html): 6-Slide interactive visual deck with keyboard shortcuts (Arrow keys), live Geofence simulation test buttons, pain-point breakdowns, and role flows.
     - [`SCHOOL_OWNER_PITCH_GUIDE.md`](./SCHOOL_OWNER_PITCH_GUIDE.md): Slide-by-slide Roman Urdu speaking script, dialogue templates, and common objection handling for school meetings.
   - Committed and pushed to GitHub `origin/main` upon user instruction.
+* **[2026-10-08 15:33]**:
+  - **Created Visual Mermaid Flowcharts Document:**
+    - [`VISUAL_SYSTEM_WORKFLOWS_AND_FLOWCHARTS.md`](./VISUAL_SYSTEM_WORKFLOWS_AND_FLOWCHARTS.md): 5 High-impact, visual Mermaid flowcharts mapping:
+      1. Master Authentication & Role-Based Access Isolation Flow.
+      2. Super Admin & Principal Executive Command Center Flow.
+      3. Individual Teacher Complete Daily Lifecycle Flow (Morning Geofence/ZKTeco check-in -> Roll-call -> CA 40% Marks -> Homework).
+      4. Student & Parent Academic, 3-Part Bank Challan, JazzCash Pay & BSEK Exam Flow.
+      5. Dual Attendance Decision Engine Flowchart (Hardware ZKTeco vs Mobile Geofence <50m + WebAuthn).
+  - Committed and pushed to GitHub `origin/main` upon user instruction.
 
 ---
 
