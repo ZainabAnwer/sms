@@ -17,11 +17,10 @@ These rules are permanently active for this project and must be strictly followe
 
 ---
 
-## 3. 🧠 Understand First, Confirm, Then Implement
-- **Rule:** Jab bhi user koi naya kaam, requirement ya instruction bole:
-  1. **Step 1:** Pehle apni **Understanding** wazeh lafzon mein bayan karni hai: *"Maine yeh kaam samjha hai ke: [Details]..."*
-  2. **Step 2:** Plan aur approach brief mein batani hai.
-  3. **Step 3:** Phir us kaam ko implement karna hai. Blindly assumptions par bina samjhe koi cheez nahi karni.
+## 3. 🧠 Understand First, Confirm, Then Implement (Calibrated by Task Size)
+- **Rule:**
+  - **Chote / Routine Tasks (e.g. push, status, quick edits):** Sirf **1 line** mein concise confirmation de kar tokens / credits bachane hain. Lambi boilerplate details repeat nahi karni.
+  - **Bare Coding / New Feature Tasks:** Pehle apni **Understanding** wazeh bayan karni hai, plan aur approach batani hai, phir implementation karni hai.
 
 ---
 
@@ -30,6 +29,6 @@ These rules are permanently active for this project and must be strictly followe
 - **Core Pillars:**
   - Role-Based Access Isolation (Super Admin vs Individual Teacher vs Student/Parent vs Accounts).
   - Triplicate Bank Challans (Meezan / HBL standard) + JazzCash/Easypaisa webhooks.
-  - Hardware Biometric Engine (ZKTeco TCP/IP Port 4370) with 15m grace period and late-deduction rules.
+  - Dual Attendance Engine: Hardware (ZKTeco TCP/IP 4370) + Zero-Hardware Mobile Geofence (<50m) + WebAuthn Fingerprint.
   - Karachi BSEK Continuous Assessment (CA 40%) + Terminal Exam (60%) marksheets.
   - Sibling Concession, SheetJS bulk Excel onboarding, Transport fleet, and Digital Homework Diary.

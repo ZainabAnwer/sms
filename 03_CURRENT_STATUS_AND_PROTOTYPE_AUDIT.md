@@ -101,6 +101,41 @@ The application is currently served locally and exposed via an active Cloudflare
     - Injected 6 OpenSpec skills and slash-workflows into `.agents/` (`/opsx-propose`, `/opsx-apply`, `/opsx-verify`, `/opsx-archive`, etc.) for managing living specifications and task proposals.
     - Verified all project rules in `.agents/rules/project_rules.md` and `AGENTS.md` remain intact.
     - Committed and pushed to GitHub `origin/main` upon user instruction.
+* **[2026-10-08 13:20]**:
+  - **Hoorain's Engineering Specification Synthesized:**
+    - Evaluated Hoorain's 3-page Technical Plan against Zainab's plan.
+    - Integrated 5 high-value engineering features into [`01_SYSTEM_ARCHITECTURE_AND_TECH_STACK.md`](./01_SYSTEM_ARCHITECTURE_AND_TECH_STACK.md) and [`02_MASTER_GOAL_AND_FULL_FEATURE_ROADMAP.md`](./02_MASTER_GOAL_AND_FULL_FEATURE_ROADMAP.md):
+      1. **Receptionist / Front-Desk Portal:** Admission inquiries, daily visitor pass register, and student certificate generator (Leaving, Bonafide, Character).
+      2. **Biometric Device Health & Heartbeat Dashboard:** Real-time IP, serial, online status, ping heartbeat, and sync records.
+      3. **Idempotency De-duplication:** SHA-256 hash `hash(device_id + user_id + timestamp_minute)` filtering accidental multi-taps.
+      4. **Raw Biometric Pipeline:** `biometric_events` table auto-computing earliest punch as Clock-in and latest as Clock-out.
+      5. **Leave Management Engine:** Digital faculty and student leave submissions with Principal 1-click approval queues.
+      6. **Offline Buffer Sync:** Resilience against internet downtime with local buffer storage.
+    - Zero commits or pushes performed (changes strictly kept local per Rule 2).
+* **[2026-10-08 14:55]**:
+  - **Zero-Hardware Cost Attendance Architecture Integrated:**
+    - Documented **Dual-Mode Attendance Infrastructure** across [`01_SYSTEM_ARCHITECTURE_AND_TECH_STACK.md`](./01_SYSTEM_ARCHITECTURE_AND_TECH_STACK.md) and [`02_MASTER_GOAL_AND_FULL_FEATURE_ROADMAP.md`](./02_MASTER_GOAL_AND_FULL_FEATURE_ROADMAP.md).
+    - Designed **Mode B ($0 Hardware Capex option)**:
+      1. Campus Geofencing: HTML5 Geolocation API calculating Haversine distance to school boundary (< 50m radius). Blocks check-ins attempted from home.
+      2. WebAuthn Fingerprint / FaceID API: Uses native smartphone biometric sensors directly inside Chrome/Safari without requiring Python or native app installations.
+      3. Updated `attendance_logs` schema to track `source` (`ZKTECO_HARDWARE` vs `MOBILE_GEOFENCE_WEBAUTHN`), `geo_lat`, `geo_lng`, and `biometric_verified`.
+    - Committed and pushed to GitHub `origin/main` upon user instruction.
+* **[2026-10-08 15:00]**:
+  - Calibrated Rule 3 in `AGENTS.md`: Short 1-line responses for routine tasks (e.g. push, status) to preserve AI credits, reserving detailed explanations for major coding tasks.
+* **[2026-10-08 15:20]**:
+  - **Created School Owner & Principal Presentation Deck:**
+    - [`SCHOOL_OWNER_PRESENTATION_DECK.html`](./SCHOOL_OWNER_PRESENTATION_DECK.html): 6-Slide interactive visual deck with keyboard shortcuts (Arrow keys), live Geofence simulation test buttons, pain-point breakdowns, and role flows.
+    - [`SCHOOL_OWNER_PITCH_GUIDE.md`](./SCHOOL_OWNER_PITCH_GUIDE.md): Slide-by-slide Roman Urdu speaking script, dialogue templates, and common objection handling for school meetings.
+  - Committed and pushed to GitHub `origin/main` upon user instruction.
+* **[2026-10-08 15:33]**:
+  - **Created Visual Mermaid Flowcharts Document:**
+    - [`VISUAL_SYSTEM_WORKFLOWS_AND_FLOWCHARTS.md`](./VISUAL_SYSTEM_WORKFLOWS_AND_FLOWCHARTS.md): 5 High-impact, visual Mermaid flowcharts mapping:
+      1. Master Authentication & Role-Based Access Isolation Flow.
+      2. Super Admin & Principal Executive Command Center Flow.
+      3. Individual Teacher Complete Daily Lifecycle Flow (Morning Geofence/ZKTeco check-in -> Roll-call -> CA 40% Marks -> Homework).
+      4. Student & Parent Academic, 3-Part Bank Challan, JazzCash Pay & BSEK Exam Flow.
+      5. Dual Attendance Decision Engine Flowchart (Hardware ZKTeco vs Mobile Geofence <50m + WebAuthn).
+  - Committed and pushed to GitHub `origin/main` upon user instruction.
 
 ---
 
