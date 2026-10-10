@@ -195,11 +195,12 @@ The application is currently served locally and exposed via an active Cloudflare
     - Standardized faculty session banner with crisp Dark Blue accent and yellow emblem.
     - Replaced multi-colored stat icons (KPI meters) with uniform Dark Blue icons on subtle dark blue background tint (`rgba(22, 29, 74, 0.08)`).
     - Unified all 4 Teacher quick access shortcut cards (Students, Routine, Roll-Call, Marks) to clean Dark Blue (`#161d4a`).
-* **[2026-10-09 19:12]**:
-  - **GitHub Repository Initialization & Push (Explicit User Permission):**
-    - Created remote repository `https://github.com/ZainabAnwer/sms`.
-    - Initialized local git repository on branch `main` and linked to `origin`.
-    - Staged and prepared all production architecture specifications, operational guides, interactive prototype (`sms.html`), and auto-redirect launcher (`index.html`) for push.
+* **[2026-10-09 19:22]**:
+  - **Merged and Pushed into Upstream Repository (`the-farazz/SMS`):**
+    - Linked remote origin directly to `https://github.com/the-farazz/SMS.git`.
+    - Integrated with upstream `main` branch containing commits by Sir Faraz and Hoorain Sundus.
+    - Successfully committed and pushed `sms.html`, `index.html`, and documentation as commit `42d3258`.
+    - Synced personal fork at `https://github.com/ZainabAnwer/sms`.
   - Push executed per explicit user authorization (Rule 2).
 
 ---
